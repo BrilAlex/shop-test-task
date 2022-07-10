@@ -1,0 +1,19 @@
+.orderForm {
+  width: 230px;
+  padding: 15px;
+  box-shadow: 5px 5px 5px black;
+}
+
+.orderForm input {
+  display: block;
+  width: 208px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border: 1px solid black;
+}
+
+.orderForm button {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+}

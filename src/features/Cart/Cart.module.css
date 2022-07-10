@@ -1,0 +1,16 @@
+.cart {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+}
+
+.cartItems {
+  margin-right: 15px;
+  width: 60%;
+}
+
+.cartTotal {
+  text-align: left;
+  font-weight: bold;
+  text-decoration: underline;
+}

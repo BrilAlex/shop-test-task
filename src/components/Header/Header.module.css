@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 25px;
+  background: gray;
+  color: white;
+}
+
+.cartBlock {
+  height: 50px;
+}
+
+.cartButton {
+  padding: 5px 10px;
+}
+
+.cartTotal {
+  font-size: 12px;
+}

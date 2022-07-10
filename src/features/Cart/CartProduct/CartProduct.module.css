@@ -1,0 +1,23 @@
+.cartProduct {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-shadow: 5px 5px 5px black;
+}
+
+.productImage, .productDescription {
+  margin-right: 15px;
+}
+
+.quantityBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quantityBlock button {
+  margin: 10px;
+  padding: 5px 10px;
+}
