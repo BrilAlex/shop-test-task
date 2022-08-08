@@ -7,13 +7,22 @@
 .orderForm input {
   display: block;
   width: 208px;
-  margin-bottom: 10px;
+  margin-top: 10px;
   padding: 5px 10px;
   border: 1px solid black;
+}
+
+.orderForm input:first-child {
+  margin-top: 0;
 }
 
 .orderForm button {
   display: block;
   width: 100%;
+  margin-top: 10px;
   padding: 5px 10px;
+}
+
+.error {
+  color: red;
 }

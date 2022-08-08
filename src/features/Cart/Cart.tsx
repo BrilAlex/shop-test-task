@@ -23,7 +23,7 @@ export const Cart = () => {
                 <div className={s.cartTotal}>Total: {cartTotalSum}</div>
               </div>
               <div>
-                <OrderForm/>
+                <OrderForm products={productsInCart}/>
               </div>
             </>
             :
