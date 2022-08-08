@@ -1,5 +1,6 @@
-import {catalogAPI, ProductType} from "../../app/api";
+import {productsRef, ProductType} from "../../app/api";
 import {AppThunkType} from "../../app/store";
+import {onValue} from "firebase/database";
 
 type InitStateType = typeof initState;
 
@@ -22,7 +23,8 @@ const setProducts = (products: ProductType[]) => ({type: "SET-PRODUCTS-DATA", pr
 
 // Thunk Creators
 export const fetchProducts = (): AppThunkType => (dispatch) => {
-  catalogAPI.getProducts().then(data => {
+  onValue(productsRef, (snapshot) => {
+    const data = snapshot.val();
     dispatch(setProducts(data));
   });
 };

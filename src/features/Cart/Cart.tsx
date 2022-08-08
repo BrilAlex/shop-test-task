@@ -13,20 +13,22 @@ export const Cart = () => {
     <div>
       <h2>Cart</h2>
       <div className={s.cart}>
-        <div className={s.cartItems}>
-          <div>
-            {
-              productsInCart.length !== 0 ?
-                productsInCart.map(p => <CartProduct key={p.id} product={p}/>)
-                :
-                <div>Your cart is empty</div>
-            }
-          </div>
-          <div className={s.cartTotal}>Total: {cartTotalSum}</div>
-        </div>
-        <div>
-          <OrderForm/>
-        </div>
+        {
+          productsInCart.length !== 0 ?
+            <>
+              <div className={s.cartItems}>
+                <div>
+                  {productsInCart.map(p => <CartProduct key={p.id} product={p}/>)}
+                </div>
+                <div className={s.cartTotal}>Total: {cartTotalSum}</div>
+              </div>
+              <div>
+                <OrderForm/>
+              </div>
+            </>
+            :
+            <div>Your cart is empty</div>
+        }
       </div>
     </div>
   );
