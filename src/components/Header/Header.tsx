@@ -1,10 +1,11 @@
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../app/store";
 import s from "./Header.module.css";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const currentPathname = useLocation().pathname;
 
   const cartTotalSum = useSelector<AppStateType, number>(state => state.cart.cartTotalSum);
 
@@ -14,10 +15,13 @@ export const Header = () => {
 
   return (
     <div className={s.header}>
-      <div className={s.cartBlock}>
-        <button className={s.cartButton} onClick={onCartClick}>Cart</button>
-        {cartTotalSum > 0 && <div className={s.cartTotal}>Sum: {cartTotalSum}</div>}
-      </div>
+      {
+        currentPathname !== "/cart" &&
+        <div className={s.cartBlock}>
+          <button className={s.cartButton} onClick={onCartClick}>Cart</button>
+          {cartTotalSum > 0 && <div className={s.cartTotal}>Sum: {cartTotalSum}</div>}
+        </div>
+      }
     </div>
   );
 };
