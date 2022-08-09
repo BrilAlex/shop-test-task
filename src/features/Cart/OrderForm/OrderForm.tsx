@@ -1,7 +1,8 @@
 import s from "./OrderForm.module.css"
-import {CartProductType} from "../cartReducer";
+import {CartProductType, clearCart} from "../cartReducer";
 import {FC} from "react";
 import {FormikErrors, useFormik} from "formik";
+import {useAppDispatch} from "../../../app/store";
 
 type OrderFormPropsType = {
   products: CartProductType[]
@@ -33,6 +34,8 @@ const validate = (values: OrderFormValuesType) => {
 };
 
 export const OrderForm: FC<OrderFormPropsType> = ({products}) => {
+  const dispatch = useAppDispatch();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -44,6 +47,7 @@ export const OrderForm: FC<OrderFormPropsType> = ({products}) => {
     onSubmit: values => {
       console.log(JSON.stringify({userData: values, orderDetails: products}));
       formik.resetForm();
+      dispatch(clearCart());
     },
   });
 

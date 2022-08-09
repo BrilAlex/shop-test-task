@@ -3,6 +3,7 @@ import {CartActionType, cartReducer} from "../features/Cart/cartReducer";
 import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {CatalogActionType, catalogReducer} from "../features/Catalog/catalogReducer";
 import {useDispatch} from "react-redux";
+import {loadCartFromLS, saveCartToLS} from "../utils/localStorageUtils";
 
 export type AppStateType = ReturnType<typeof rootReducer>;
 
@@ -11,7 +12,13 @@ const rootReducer = combineReducers({
   cart: cartReducer,
 });
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+export const store = createStore(rootReducer, loadCartFromLS(), applyMiddleware(thunk));
+
+store.subscribe(() => {
+  saveCartToLS({
+    cart: store.getState().cart,
+  });
+});
 
 export type RootActionsType = CatalogActionType | CartActionType;
 export type AppThunkType<ReturnType = void> = ThunkAction<ReturnType, AppStateType, unknown, RootActionsType>;

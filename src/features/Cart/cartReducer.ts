@@ -2,13 +2,13 @@ import {ProductType} from "../../app/api";
 
 export type CartProductType = ProductType & { quantity: number };
 
-type InitStateType = typeof initState;
+export type CartInitStateType = typeof initState;
 const initState = {
   productsInCart: [] as CartProductType[],
   cartTotalSum: 0,
 };
 
-export const cartReducer = (state = initState, action: CartActionType): InitStateType => {
+export const cartReducer = (state = initState, action: CartActionType): CartInitStateType => {
   switch (action.type) {
     case "ADD-PRODUCT-TO-CART":
       const newProduct = action.product;
@@ -33,6 +33,12 @@ export const cartReducer = (state = initState, action: CartActionType): InitStat
           .filter(p => p.quantity > 0),
         cartTotalSum: state.cartTotalSum + (action.productPrice * action.quantity),
       }
+    case "CLEAR-CART":
+      return {
+        ...state,
+        productsInCart: [],
+        cartTotalSum: 0,
+      };
     default:
       return state;
   }
@@ -41,8 +47,12 @@ export const cartReducer = (state = initState, action: CartActionType): InitStat
 // Action Creators
 export type CartActionType =
   | ReturnType<typeof addProductToCart>
-  | ReturnType<typeof changeProductQuantity>;
+  | ReturnType<typeof changeProductQuantity>
+  | ReturnType<typeof clearCart>;
+
 export const addProductToCart = (product: ProductType) =>
   ({type: "ADD-PRODUCT-TO-CART", product} as const);
 export const changeProductQuantity = (productID: number, productPrice: number, quantity: number) =>
   ({type: "CHANGE-PRODUCT-QUANTITY", productID, productPrice, quantity} as const);
+export const clearCart = () =>
+  ({type: "CLEAR-CART"} as const);
