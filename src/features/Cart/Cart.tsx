@@ -20,7 +20,7 @@ export const Cart = () => {
                 <div>
                   {productsInCart.map(p => <CartProduct key={p.id} product={p}/>)}
                 </div>
-                <div className={s.cartTotal}>Total: {cartTotalSum}</div>
+                <div className={s.cartTotal}>Total: {cartTotalSum}$</div>
               </div>
               <div>
                 <OrderForm products={productsInCart}/>

@@ -19,7 +19,7 @@ export const Header = () => {
         currentPathname !== "/cart" &&
         <div className={s.cartBlock}>
           <button className={s.cartButton} onClick={onCartClick}>Cart</button>
-          {cartTotalSum > 0 && <div className={s.cartTotal}>Sum: {cartTotalSum}</div>}
+          {cartTotalSum > 0 && <div className={s.cartTotal}>Sum: {cartTotalSum}$</div>}
         </div>
       }
     </div>

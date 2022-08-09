@@ -19,7 +19,7 @@ export const Product: FC<ProductPropsType> = ({product}) => {
     <div className={s.product}>
       <img src={product.imageUrl} alt={"Product Img"}/>
       <h3>{product.name}</h3>
-      <p>Price: {product.price}</p>
+      <p>Price: {product.price}$</p>
       <p>{product.description}</p>
       <button className={s.addToCartButton} onClick={addToCart}>Add to cart</button>
     </div>
